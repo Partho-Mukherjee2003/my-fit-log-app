@@ -1,10 +1,13 @@
 "use client";
 import React, { useContext, useState } from "react";
-import { ChevronDown } from "lucide-react";
+// import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { ExerciseContext } from "@/Context/ExerciseContext";
 import TodaysCardPage from "../TodayandSaveCardDetails/TodaysCards";
 import SaveCardPage from "../TodayandSaveCardDetails/SaveCards";
+import type {ExercisesType} from "@/Types/ExercisesTypes"
+
+
 
 const MyPlanPage = () => {
   const { saveLater, todaysPlan } = useContext(ExerciseContext);
@@ -19,6 +22,22 @@ const MyPlanPage = () => {
     totalCalories = totalCalories + Number(exercise.caloriesBurned);
   });
   const [sortBy,setSortBy] = useState<"duration" | "calories" | "rating">("duration");
+  const sortedExercise = (exercises: ExercisesType[]) => {
+    const sortExercises = [...exercises];
+    if (sortBy === "duration") {
+      return sortExercises.sort(
+        (a, b) => Number(a.duration) - Number(b.duration),
+      );
+    }
+    if (sortBy === "calories") {
+      return sortExercises.sort(
+        (a, b) => Number(a.caloriesBurned) - Number(b.caloriesBurned),
+      );
+    }
+    return sortExercises.sort((a, b) => Number(b.rating) - Number(a.rating));
+  };
+  const sortedTodaysPlan = sortedExercise(todaysPlan);
+  const sortedSaveLater = sortedExercise(saveLater);
   return (
     <div className="min-h-screen bg-[#0d0d0d] px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
       <div className="mx-auto max-w-7xl">
@@ -114,7 +133,7 @@ const MyPlanPage = () => {
             </div>
           ) : (
             <div className="space-y-4">
-              {todaysPlan.map((exercise) => (
+              {sortedTodaysPlan.map((exercise) => (
                 <TodaysCardPage key={exercise.id} exercise={exercise} />
               ))}
             </div>
@@ -136,7 +155,7 @@ const MyPlanPage = () => {
           </div>
         ) : (
           <div className="space-y-4">
-            {saveLater.map((exercise) => (
+            {sortedSaveLater.map((exercise) => (
               <SaveCardPage key={exercise.id} exercise={exercise} />
             ))}
           </div>

@@ -6,8 +6,13 @@ import Image from "next/image";
 import { ExerciseContext } from "@/Context/ExerciseContext";
 
 const NavBar = () => {
+  const exerciseProvider = useContext(ExerciseContext);
 
-  const { saveLater, todaysPlan } = useContext(ExerciseContext);
+  if (!exerciseProvider) {
+    throw new Error("NavBar must be used within an ExerciseProvider");
+  }
+
+  const { saveLater, todaysPlan } = exerciseProvider;
   const [active, setActive] = useState("workouts");
 
   const activeStyle = "bg-[#1c2a0a] text-[#b6f000]";
@@ -39,13 +44,16 @@ const NavBar = () => {
   );
 
   return (
-    <div className="mt-5 container mx-auto max-lg:collapseLink bg-[#0b0d10] border border-white/5 lg:mb-5 shadow-sm w-full rounded-md">
+    <div className="mt-5 container mx-auto bg-[#0b0d10] border border-white/5 lg:mb-5 shadow-sm w-full rounded-md">
       <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
+
+      {/* Overlay backdrop */}
       <label
         htmlFor="navbar-1-toggle"
-        className="fixed inset-0 hidden max-lg:peer-checked:block"
+        className="fixed inset-0 z-40 hidden max-lg:peer-checked:block"
       ></label>
-      <div className="collapse-title navbar px-4 lg:px-6">
+
+      <div className="navbar px-4 lg:px-6">
         <div className="navbar-start">
           <label
             htmlFor="navbar-1-toggle"
@@ -74,9 +82,11 @@ const NavBar = () => {
             </span>
           </Link>
         </div>
+
         <div className="navbar-center hidden lg:flex">
           <ul className="flex items-center gap-2">{Links}</ul>
         </div>
+
         <div className="navbar-end gap-5">
           <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
             <span>Plan</span>
@@ -92,8 +102,10 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <div className="collapse-content lg:hidden z-1">
-        <ul className="flex flex-col gap-2 pb-2">{Links}</ul>
+
+      
+      <div className="hidden max-lg:peer-checked:block relative z-50 px-4 pb-4">
+        <ul className="flex flex-col gap-2">{Links}</ul>
       </div>
     </div>
   );
