@@ -8,7 +8,6 @@ import SaveCardPage from "../TodayandSaveCardDetails/SaveCards";
 import type {ExercisesType} from "@/Types/ExercisesTypes"
 
 
-
 const MyPlanPage = () => {
   const { saveLater, todaysPlan } = useContext(ExerciseContext);
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");

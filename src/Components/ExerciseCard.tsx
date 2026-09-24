@@ -1,7 +1,9 @@
+"use client"
 import Image from "next/image";
 import React from "react";
 import Link from 'next/link'
 import { Clock, Flame, Star } from "lucide-react";
+import { toast } from "react-toastify";
 
 export interface ExercisesType {
   id: number;
@@ -21,7 +23,7 @@ export interface ExercisesType {
 
 const ExerciseCard = ({ exercise }: { exercise: ExercisesType }) => {
   return (
-    <Link href={`/Exercises/${exercise.id}`}>
+    <Link onClick={()=>{toast.info("View exercise details")}} href={`/Exercises/${exercise.id}`}>
       <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden w-full shadow-lg">
         {/* Image */}
         <div className="relative w-full h-48">
