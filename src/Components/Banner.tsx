@@ -34,8 +34,8 @@ const Banner = () => {
               into today&apos;s plan, and watch the week&apos;s work add up.
             </p>
 
-            <a href='#library'>
-              <button className="bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-lg px-6 py-3 transition-colors">
+            <a href="#library">
+              <button className="cursor-pointer bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-lg px-6 py-3 transition-colors">
                 Browse Workouts
               </button>
             </a>

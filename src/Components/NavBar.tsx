@@ -15,26 +15,26 @@ const NavBar = () => {
 
   const Links = (
     <>
-      <Link href='/'>
+      <Link href="/">
         <button
           onClick={() => setActive("workouts")}
-          className={`rounded-full px-4 py-1.5 text-sm font-medium ${
+          className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium ${
             active === "workouts" ? activeStyle : normalStyle
           }`}
         >
           Workouts
         </button>
-      </Link >
-      <Link href='/MyPlan'>
+      </Link>
+      <Link href="/MyPlan">
         <button
           onClick={() => setActive("plan")}
-          className={`rounded-full px-4 py-1.5 text-sm font-medium ${
+          className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium ${
             active === "plan" ? activeStyle : normalStyle
           }`}
         >
           My Plan
         </button>
-      </Link >
+      </Link>
     </>
   );
 
@@ -67,7 +67,7 @@ const NavBar = () => {
               />
             </svg>
           </label>
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="cursor-pointer flex items-center gap-2">
             <Image src={logo} width={30} height={35} alt="logo" />
             <span className="text-lg font-extrabold uppercase tracking-wide text-white">
               FitLog
