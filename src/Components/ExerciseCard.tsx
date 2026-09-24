@@ -29,6 +29,7 @@ const ExerciseCard = ({ exercise }: { exercise: ExercisesType }) => {
             src={exercise.image}
             alt={exercise.name}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover"
           />
         </div>

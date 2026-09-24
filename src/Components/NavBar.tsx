@@ -12,7 +12,7 @@ const NavBar = () => {
 
   const Links = (
     <>
-      <Link href=''>
+      <Link href='/'>
         <button
           onClick={() => setActive("workouts")}
           className={`rounded-full px-4 py-1.5 text-sm font-medium ${
@@ -22,7 +22,7 @@ const NavBar = () => {
           Workouts
         </button>
       </Link >
-      <Link href=''>
+      <Link href='/MyPlan'>
         <button
           onClick={() => setActive("plan")}
           className={`rounded-full px-4 py-1.5 text-sm font-medium ${

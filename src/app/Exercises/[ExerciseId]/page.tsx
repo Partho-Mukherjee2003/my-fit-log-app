@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import { Calendar, Bookmark } from "lucide-react";
+import TodaysPlanBtn from "@/app/ExerciseDetailsBtns/TodaysPlanBtn";
+import SaveLaterBtn from "@/app/ExerciseDetailsBtns/SaveLaterBtn";
 
 const ExerciseDetailsPage = async ({
   params,
@@ -113,14 +114,8 @@ const ExerciseDetailsPage = async ({
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 mt-8">
-            <button className="flex items-center justify-center gap-2 bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-lg px-5 py-3 transition-colors">
-              <Calendar size={18} />
-              Add to today&apos;s plan
-            </button>
-            <button className="flex items-center justify-center gap-2 border border-gray-700 hover:border-gray-500 text-white font-semibold rounded-lg px-5 py-3 transition-colors">
-              <Bookmark size={18} />
-              Save for later
-            </button>
+            <TodaysPlanBtn exerciseDetail={exerciseDetail} />
+            <SaveLaterBtn exerciseDetail={exerciseDetail} />
           </div>
         </div>
       </div>
