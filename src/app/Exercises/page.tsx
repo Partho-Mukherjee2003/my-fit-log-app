@@ -14,7 +14,10 @@ const ExercisesPage = async () => {
   const Exercises = await ExercisesPromise();
 
   return (
-    <div className="bg-[#0d0d0d] min-h-screen px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+    <div
+      id="library"
+      className="bg-[#0d0d0d] min-h-screen px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
+    >
       <div className="container mx-auto mb-10 sm:mb-15">
         {/* Heading */}
         <h1 className="text-white text-3xl sm:text-4xl font-extrabold uppercase tracking-wide">

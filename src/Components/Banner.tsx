@@ -2,10 +2,11 @@ import Image from "next/image";
 import React from "react";
 import hero from "@/assets/banner.png";
 
+
 const Banner = () => {
   return (
-    <div className=" py-6 px-4 sm:py-10">
-      <div className="hero bg-[#1a1a1a] rounded-3xl max-w-7xl mx-auto overflow-hidden">
+    <div className="py-6 px-4 sm:py-10">
+      <div className="container mx-auto hero bg-[#1a1a1a] rounded-3xl   overflow-hidden">
         <div className="hero-content flex-col-reverse lg:flex-row-reverse gap-10 lg:gap-16 py-10 lg:py-16 px-6 lg:px-16 w-full">
           {/* Image */}
           <Image
@@ -33,9 +34,11 @@ const Banner = () => {
               into today&apos;s plan, and watch the week&apos;s work add up.
             </p>
 
-            <button className="bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-lg px-6 py-3 transition-colors">
-              Browse Workouts
-            </button>
+            <a href='#library'>
+              <button className="bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-lg px-6 py-3 transition-colors">
+                Browse Workouts
+              </button>
+            </a>
           </div>
         </div>
       </div>

@@ -23,14 +23,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      data-theme = "light"
+      data-theme="light"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
     >
       <body className=" flex flex-col">
-        <NavBar/>
+        <NavBar />
         {children}
-        <FooterPage/>
-        </body>
+        <FooterPage />
+      </body>
     </html>
   );
 }
