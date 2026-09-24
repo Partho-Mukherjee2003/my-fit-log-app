@@ -1,10 +1,13 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "@/assets/logo.png";
 import Image from "next/image";
+import { ExerciseContext } from "@/Context/ExerciseContext";
 
 const NavBar = () => {
+
+  const { saveLater, todaysPlan } = useContext(ExerciseContext);
   const [active, setActive] = useState("workouts");
 
   const activeStyle = "bg-[#1c2a0a] text-[#b6f000]";
@@ -78,13 +81,13 @@ const NavBar = () => {
           <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
             <span>Plan</span>
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#b6f000] px-1.5 text-xs font-bold text-black">
-              0
+              {todaysPlan.length}
             </span>
           </div>
           <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
             <span>Saved</span>
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-white/20 bg-[#15181c] px-1.5 text-xs font-bold text-white">
-              0
+              {saveLater.length}
             </span>
           </div>
         </div>

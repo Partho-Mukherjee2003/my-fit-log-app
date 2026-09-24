@@ -15,10 +15,14 @@ const TodaysPlanBtn = ({
     throw new Error("TodaysPlanBtn must be used within an ExerciseProvider");
   }
   const { todaysPlan, setTodaysPlan } = exerciseProvider;
+      const alreadyAdded = todaysPlan.some(
+        (item) => item.id === exerciseDetail.id,
+      );
+
   const handleTodaysPlan = () => {
-    const alreadyAdded = todaysPlan.some(item => item.id === exerciseDetail.id)
-    if (alreadyAdded === true) {
-      toast.warning("This exercise is already added to today's plan");
+
+    if (alreadyAdded ){
+      toast.warning("This exercise is already Added today's plan ");
       return;
     }
     setTodaysPlan([...todaysPlan, exerciseDetail]);
@@ -29,10 +33,12 @@ const TodaysPlanBtn = ({
   return (
     <button
       onClick={() => handleTodaysPlan()}
-      className="pointer flex items-center justify-center gap-2 bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-lg px-5 py-3 transition-colors"
+      className={
+        "pointer flex items-center justify-center gap-2 alreadyAdded? bg-lime-400 text-black hover:bg-lime-300  font-bold rounded-lg px-5 py-3 transition-colors"
+      }
     >
       <Calendar size={18} />
-      Add to today&apos;s plan
+      {alreadyAdded ? "Already added" : "Add to today's plan"}
     </button>
   );
 };

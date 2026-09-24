@@ -1,11 +1,14 @@
-import React from "react";
+"use client";
+import React, { useContext, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-// import { useContext } from "react";
-// import { ExerciseContext } from "@/Context/ExerciseContext";
+import { ExerciseContext } from "@/Context/ExerciseContext";
+import TodaysCardPage from "../TodayandSaveCardDetails/TodaysCards";
+import SaveCardPage from "../TodayandSaveCardDetails/SaveCards";
 
 const MyPlanPage = () => {
-  // const { todaysPlan, saveLater } = useContext(ExerciseContext);
+  const { saveLater, todaysPlan } = useContext(ExerciseContext);
+  const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
 
   return (
     <div className="bg-[#0d0d0d] min-h-screen px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
@@ -44,12 +47,26 @@ const MyPlanPage = () => {
 
         {/* Tabs + Sort */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-          {/* Toggle buttons */}
+          {/* Toggle buttons — functional tabs */}
           <div className="bg-[#1a1a1a] border border-gray-800 rounded-full p-1 flex items-center gap-1">
-            <button className="text-gray-400 text-sm font-medium px-4 py-2 rounded-full hover:text-white transition-colors">
+            <button
+              onClick={() => setActiveTab("today")}
+              className={`text-sm font-medium px-4 py-2 rounded-full transition-colors ${
+                activeTab === "today"
+                  ? "bg-[#2a2a2a] text-white font-bold"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
               Today&apos;s Plan
             </button>
-            <button className="bg-[#2a2a2a] text-white text-sm font-bold px-4 py-2 rounded-full">
+            <button
+              onClick={() => setActiveTab("saved")}
+              className={`text-sm font-medium px-4 py-2 rounded-full transition-colors ${
+                activeTab === "saved"
+                  ? "bg-[#2a2a2a] text-white font-bold"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
               Saved
             </button>
           </div>
@@ -64,20 +81,54 @@ const MyPlanPage = () => {
           </div>
         </div>
 
-        {/* Empty state */}
-        <div className="border border-dashed border-gray-800 rounded-2xl py-16 sm:py-20 flex flex-col items-center justify-center text-center px-4">
-          <h2 className="text-white text-lg sm:text-xl font-extrabold uppercase mb-2">
-            Nothing Here Yet
-          </h2>
-          <p className="text-gray-400 text-sm mb-6 max-w-sm">
-            Browse the library and add a lift to get today moving.
-          </p>
-          <Link href='/'>
-            <button className="bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-full px-6 py-3 transition-colors">
-              Go to workouts
-            </button>
-          </Link>
-        </div>
+        {/* Tab content (Conditional Rendering based on activeTab) */}
+        {activeTab === "today" ? (
+          todaysPlan.length === 0 ? (
+            <div className="border border-dashed border-gray-800 rounded-2xl py-16 sm:py-20 flex flex-col items-center justify-center text-center px-4">
+              <h2 className="text-white text-lg sm:text-xl font-extrabold uppercase mb-2">
+                Nothing Here Yet
+              </h2>
+              <p className="text-gray-400 text-sm mb-6 max-w-sm">
+                Browse the library and add a lift to get today moving.
+              </p>
+              <Link href="/">
+                <button className="bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-full px-6 py-3 transition-colors">
+                  Go to workouts
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {todaysPlan.map
+                ? todaysPlan.map((exercise) => (
+                    <TodaysCardPage key={exercise.id} exercise={exercise} />
+                  ))
+                : todaysPlan.map((exercise) => (
+                    <TodaysCardPage key={exercise.id} exercise={exercise} />
+                  ))}
+            </div>
+          )
+        ) : saveLater.length === 0 ? (
+          <div className="border border-dashed border-gray-800 rounded-2xl py-16 sm:py-20 flex flex-col items-center justify-center text-center px-4">
+            <h2 className="text-white text-lg sm:text-xl font-extrabold uppercase mb-2">
+              No Saved Exercises
+            </h2>
+            <p className="text-gray-400 text-sm mb-6 max-w-sm">
+              Save a lift for later and it&apos;ll show up here.
+            </p>
+            <Link href="/">
+              <button className="bg-lime-400 hover:bg-lime-300 text-black font-bold rounded-full px-6 py-3 transition-colors">
+                Go to workouts
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {saveLater.map((exercise) => (
+              <SaveCardPage key={exercise.id} exercise={exercise} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

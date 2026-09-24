@@ -1,4 +1,4 @@
-export interface ExercisesType {
+export  interface ExercisesType {
   id: number;
   name: string;
   image: string;
