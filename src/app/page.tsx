@@ -1,11 +1,15 @@
 import Banner from "@/Components/Banner";
 
+import ExercisesPage from "./Exercises/page";
+
 
 export default function Home() {
   return (
     <div>
-      <h1>My home page</h1>
-      <Banner/>
+      
+      <Banner />
+      <ExercisesPage />
+
     </div>
   );
 }
