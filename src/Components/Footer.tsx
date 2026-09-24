@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const FooterPage = () => {
   return (
-    <footer className="rounded-2xl mx-auto container w-full bg-[#0b0d10] border-t border-white/5">
+    <footer className="rounded-2xl mx-auto container w-full bg-[#0b0d10] border-y border-white/5">
       <div className=" flex flex-col items-center justify-between gap-3 px-4 py-8 sm:flex-row lg:px-6">
         {/* Left: logo + brand */}
         <Link href="/" className="flex items-center gap-2">

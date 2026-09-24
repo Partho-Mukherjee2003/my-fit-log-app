@@ -46,7 +46,8 @@ const NavBar = () => {
         <div className="navbar-start">
           <label
             htmlFor="navbar-1-toggle"
-            className="btn btn-ghost text-white lg:hidden">
+            className="btn btn-ghost text-white lg:hidden"
+          >
             <svg
               aria-label="Menu"
               xmlns="http://www.w3.org/2000/svg"
