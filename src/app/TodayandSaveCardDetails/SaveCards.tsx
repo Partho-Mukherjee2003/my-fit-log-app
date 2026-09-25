@@ -49,10 +49,7 @@ const SaveCardPage = ({ exercise }: { exercise: ExercisesType }) => {
         >
           View Details
         </Link>
-        <button className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-[#c6f700] px-4 py-2 text-xs font-semibold text-black sm:flex-none sm:py-1.5">
-          <Check size={13} />
-          Mark as Done
-        </button>
+        
         <RemoveBtn id={exercise.id} type="saved" name={exercise.name} />
       </div>
     </div>

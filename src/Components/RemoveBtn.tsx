@@ -1,24 +1,30 @@
 'use client'
 import React, { useContext } from 'react';
-import { X } from "lucide-react";
+import {  X } from "lucide-react";
 import { ExerciseContext } from '@/Context/ExerciseContext';
 import { toast } from 'react-toastify';
 
 
 type Props = {
   id: string | number;
-  name ? : string;
-  type: "today" | "saved"; // kon list theke remove hobe
+  name : string;
+  type: "today" | "saved" | "done"
+  isDone ?: boolean
 };
 
 
-const RemoveBtn = ({ id, type }: Props) => {
+const RemoveBtn = ({ id, type,name, }: Props) => {
   const {setTodaysPlan,setSaveLater} = useContext(ExerciseContext);
 
   const handleRemove = () =>{
     if (type === "today"){
       setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
       toast.success("Successfuly remove from today's plan")
+    }
+    else if (type === 'done'){
+      setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
+      toast.success(`🎉 Great job! You completed ${name}!`);
+
     }
     else{
       setSaveLater((prev) => prev.filter((exercise) => exercise.id !== id));

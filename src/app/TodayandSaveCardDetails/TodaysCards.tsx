@@ -1,9 +1,10 @@
 import React from "react";
-import { Check, Clock, Flame, Star } from "lucide-react";
+import {  Clock, Flame, Star } from "lucide-react";
 import type { ExercisesType } from "@/Types/ExercisesTypes";
 import Image from "next/image";
 import Link from "next/link";
 import RemoveBtn from "@/Components/RemoveBtn";
+import MarksAsDone from "@/Components/MarksAsDone";
 
 const TodaysCardPage = ({ exercise }: { exercise: ExercisesType }) => {
   return (
@@ -49,11 +50,8 @@ const TodaysCardPage = ({ exercise }: { exercise: ExercisesType }) => {
         >
           View Details
         </Link>
-        <button className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-[#c6f700] px-4 py-2 text-xs font-semibold text-black sm:flex-none sm:py-1.5">
-          <Check size={13} />
-          Mark as Done
-        </button>
-        <RemoveBtn id={exercise.id} type="today" name={exercise.name}/>
+        <MarksAsDone id={exercise.id} name={exercise.name}/>
+        <RemoveBtn id={exercise.id} type="today" name={exercise.name} />
       </div>
     </div>
   );
