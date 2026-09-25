@@ -1,8 +1,9 @@
 import React from "react";
-import { Check, Clock, Flame, Star, X } from "lucide-react";
+import { Check, Clock, Flame, Star } from "lucide-react";
 import type { ExercisesType } from "@/Types/ExercisesTypes";
 import Image from "next/image";
 import Link from "next/link";
+import RemoveBtn from "@/Components/RemoveBtn";
 
 const TodaysCardPage = ({ exercise }: { exercise: ExercisesType }) => {
   return (
@@ -52,12 +53,7 @@ const TodaysCardPage = ({ exercise }: { exercise: ExercisesType }) => {
           <Check size={13} />
           Mark as Done
         </button>
-        <button
-          aria-label="Remove"
-          className="shrink-0 cursor-pointer p-1 text-gray-500 hover:text-gray-300"
-        >
-          <X size={16} />
-        </button>
+        <RemoveBtn id={exercise.id} type="today" name={exercise.name}/>
       </div>
     </div>
   );

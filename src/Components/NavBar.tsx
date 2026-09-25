@@ -88,22 +88,25 @@ const NavBar = () => {
         </div>
 
         <div className="navbar-end gap-5">
-          <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
-            <span>Plan</span>
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#b6f000] px-1.5 text-xs font-bold text-black">
-              {todaysPlan.length}
-            </span>
-          </div>
-          <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
-            <span>Saved</span>
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-white/20 bg-[#15181c] px-1.5 text-xs font-bold text-white">
-              {saveLater.length}
-            </span>
-          </div>
+          <Link href="/MyPlan">
+            <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
+              <span>Plan</span>
+              <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#b6f000] px-1.5 text-xs font-bold text-black">
+                {todaysPlan.length}
+              </span>
+            </div>
+          </Link>
+          <Link href="/MyPlan">
+            <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
+              <span>Saved</span>
+              <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-white/20 bg-[#15181c] px-1.5 text-xs font-bold text-white">
+                {saveLater.length}
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
 
-      
       <div className="hidden max-lg:peer-checked:block relative z-50 px-4 pb-4">
         <ul className="flex flex-col gap-2">{Links}</ul>
       </div>
