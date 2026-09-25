@@ -1,29 +1,23 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Check, PartyPopper } from "lucide-react";
-import { ExerciseContext } from "@/Context/ExerciseContext";
 import { toast } from "react-toastify";
 
 type Props = {
-  id: string | number;
+  id?: string | number;
   name: string;
 };
 
-const MarksAsDone = ({ id, name }: Props) => {
-  const { setTodaysPlan } = useContext(ExerciseContext);
+const MarksAsDone = ({  name }: Props) => {
   const [isDone, setIsDone] = useState(false);
 
   const handleMarkAsBtn = () => {
-    if (isDone) return; 
+    if (isDone) return; // already done hole abar click e kaj korbe na
 
     setIsDone(true);
 
-    // ekhane tomar remove/mark logic
-    setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
-
     toast.success(`🎉 Great job! You completed ${name}!`, {
       position: "top-center",
-
       autoClose: 3000,
     });
   };
@@ -34,14 +28,14 @@ const MarksAsDone = ({ id, name }: Props) => {
       disabled={isDone}
       className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-colors sm:flex-none sm:py-1.5 ${
         isDone
-          ? "cursor-default bg-[#1c2a0a] text-[#b6f000]"
+          ? "cursor-not-allowed bg-[#1c2a0a] text-[#b6f000]"
           : "cursor-pointer bg-[#c6f700] text-black"
       }`}
     >
       {isDone ? (
         <>
           <PartyPopper size={13} />
-          Done!
+          Done
         </>
       ) : (
         <>

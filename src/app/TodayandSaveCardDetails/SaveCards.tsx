@@ -1,5 +1,5 @@
 import React from "react";
-import { Check, Clock, Flame, Star } from "lucide-react";
+import {  Clock, Flame, Star } from "lucide-react";
 import type { ExercisesType } from "@/Types/ExercisesTypes";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,7 +49,7 @@ const SaveCardPage = ({ exercise }: { exercise: ExercisesType }) => {
         >
           View Details
         </Link>
-        
+
         <RemoveBtn id={exercise.id} type="saved" name={exercise.name} />
       </div>
     </div>
