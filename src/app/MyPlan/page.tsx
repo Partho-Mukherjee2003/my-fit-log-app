@@ -99,20 +99,21 @@ const MyPlanPage = () => {
           </div>
 
           {/* Sort dropdown */}
-          <select
-            value={sortBy}
-            onChange={(e) =>
-              setSortBy(e.target.value as "duration" | "calories" | "rating")
-            }
-            className="select border border-lime-400 bg-black text-white"
-          >
-            <option disabled={true}>Sort by</option>
-            <option value={"duration"}>Duration</option>
-            <option value={"calories"}>Calories Burn</option>
-            <option value={"rating"}>Rating</option>
-          </select>
+          <div className="flex flex-col items-center gap-2 text-sm sm:flex-row">
+            <span className="text-gray-400">Sort By</span>
+            <select
+              value={sortBy}
+              onChange={(e) =>
+                setSortBy(e.target.value as "duration" | "calories" | "rating")
+              }
+              className="cursor-pointer rounded-lg border border-gray-800 bg-[#1a1a1a] px-3 py-2 text-sm font-medium text-white transition-colors hover:border-gray-600 focus:border-lime-400 focus:outline-none"
+            >
+              <option value="duration">Duration</option>
+              <option value="calories">Calories Burn</option>
+              <option value="rating">Rating</option>
+            </select>
+          </div>
         </div>
-
         {/* Tab content */}
         {activeTab === "today" ? (
           todaysPlan.length === 0 ? (
